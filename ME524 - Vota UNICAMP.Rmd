@@ -61,7 +61,7 @@ IB=c(46,6)
 IQ=c(5,50)	
 IG=c(53,55)	
 FEAGRI=c(8)
-Outros=c(98,92,83)
+Outros=c(98,92,83, 200, 36, 60, 89)
 FE=c(38)
 ```
 
@@ -149,6 +149,24 @@ for(i in 1:length(mytbl$codigo)){
 graduacoes[,"Instituos"]=instituto
 ```
 
+Vamos calular as médias por cursos 
+
+```{r Totais}
+TOTAL = sum(graduacoes[,4])
+SIM = sum(graduacoes[,5])
+NAO = sum(graduacoes[,6])
+```
+
+```{r}
+mediaSim = c()
+mediaNao = c()
+for(i in 1:length(graduacoes$codigo)){
+    mediaSim[i] = graduacoes[,5]/graduacoes[,4]
+    mediaNao[i] = graduacoes[,6]/graduacoes[,4]
+    }
+graduacoes[, "Média Sim"] = mediaSim
+graduacoes[, "Média Não"] = mediaNao
+```
 
 ## Gauge Plots
 
