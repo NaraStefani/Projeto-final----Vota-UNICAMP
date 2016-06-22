@@ -161,8 +161,8 @@ NAO = sum(graduacoes[,6])
 mediaSim = c()
 mediaNao = c()
 for(i in 1:length(graduacoes$codigo)){
-    mediaSim[i] = graduacoes[,5]/graduacoes[,4]
-    mediaNao[i] = graduacoes[,6]/graduacoes[,4]
+    mediaSim[i] = round(graduacoes[i,5]/graduacoes[i,4], 2)
+    mediaNao[i] = round(graduacoes[i,6]/graduacoes[i,4], 2)
     }
 graduacoes[, "Média Sim"] = mediaSim
 graduacoes[, "Média Não"] = mediaNao
