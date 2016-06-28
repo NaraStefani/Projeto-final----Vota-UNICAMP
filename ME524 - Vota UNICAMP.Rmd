@@ -1,18 +1,19 @@
 ---
 title: "Pojeto ME524 - Vota UNICAMP"
-author: "Nara Stefani, Ricardo Corder, Robson Borges, Rodrigo Fadel, Tomás Weguelin, Victória Angeli e Vinícius Ota "
+author: 'Nara Stefani, Ricardo Corder, Robson Borges, Rodrigo Fadel, Tomás Weguelin, Victória Angeli e Vinícius Ota '
+output: pdf_document
 ---
 
 # Setup
 
-```{r input, message=FALSE,warning=FALSE,echo=F,include=F}
+```{r input, message=FALSE, warning=FALSE, echo=F, include=F}
 Sys.setlocale(locale='UTF-8')
 library(stringr)
 library(rvest)
 library(googleVis)
 library(leaflet)
-page = read_html('http://votaunicamp.herokuapp.com/results/', encoding='UTF-8')
-tbl = html_table(page)[[2]]
+page=read_html('http://votaunicamp.herokuapp.com/results/', encoding='UTF-8')
+tbl=html_table(page)[[2]]
 head(tbl)
 ```
 
@@ -40,132 +41,89 @@ head(mytbl)
 Para análise vamos adicionar uma coluna que identifica o instituto ao qual o curso pertence.
 
 ```{r}
-Imecc=c(1,2,28,29,51)
-Fem=c(10,49)
-FCA=c(100,101,102,107,109)
-IFGW=c(108,4,40,56)
-FEEC=c(11,41)
-FEC=c(12,48)
-FOP=c(14)
-FEA=c(13,43)
-FCM=c(15,58,63)
-IFCH=c(16,19,44)
-IE=c(17,47)	
-IEL=c(18,7,75)
-IA=c(22,26,64)
-FEF=c(27,45)
-FCA=c(100,101,102,105,107,109) 
-IC=c(34,42,3)	
-FEQ=c(39,9)	
-IB=c(46,6)	
-IQ=c(5,50)	
-IG=c(53,55)	
-FEAGRI=c(8)
-Outros=c(98,92,83, 200, 36, 60, 89)
-FE=c(38)
+institutos = rbind(data.frame(instituto='IMECC', codigo=c(1,2,28,29,51)),
+                   data.frame(instituto='FEM', codigo=c(10,49)),
+                   data.frame(instituto='FCA', codigo=c(100,101,102,105,107,109)),
+                   data.frame(instituto='IFGW', codigo=c(108,4,40,56)),
+                   data.frame(instituto='FEEC', codigo=c(11,41)),
+                   data.frame(instituto='FEC', codigo=c(12,48)),
+                   data.frame(instituto='FOP', codigo=14),
+                   data.frame(instituto='FEA', codigo=c(13,43)),
+                   data.frame(instituto='FCM', codigo=c(15,58,63)),
+                   data.frame(instituto='IFCH', codigo=c(16,19,44)),
+                   data.frame(instituto='IE', codigo=c(17,47)),
+                   data.frame(instituto='IEL', codigo=c(18,7,75)),
+                   data.frame(instituto='IA', codigo=c(22,26,64)),
+                   data.frame(instituto='FEF', codigo=c(27,45)),
+                   data.frame(instituto='IC', codigo=c(34,42,3)),
+                   data.frame(instituto='FEQ', codigo=c(39,9)),
+                   data.frame(instituto='IB', codigo=c(46,6)),
+                   data.frame(instituto='IQ', codigo=c(5,50)),
+                   data.frame(instituto='IG', codigo=c(53,55)),
+                   data.frame(instituto='FEAGRI', codigo=8),
+                   data.frame(instituto='FE', codigo=38),
+                   data.frame(instituto='Outros', codigo=c(98,92,83)))
+
 ```
 
 Vamos mudar a aprensentação dos dados na tabela.
 
 ```{r clean}
-instituto=c()
-#apaga as linhas com cursos do mestrado
-mytbl=mytbl[-which(mytbl$nivel=="Mestrado"),]
-#apaga as linhas com cursos do doutorado
-mytbl=mytbl[-which(mytbl$nivel=="Doutorado"),]
-#tabela sem os niveis acima
-graduacoes=mytbl
-
-##adicioar faculdade de educaçao 
-
-for(i in 1:length(mytbl$codigo)){
-  if(mytbl[i,1] %in% Imecc){
-      instituto[i] = "imecc"
-  }
-  if(mytbl[i,1] %in% FCA){
-    instituto[i] ="FCA"
-  }
-  if(mytbl[i,1] %in% FCM){
-    instituto[i] ="FCM"
-  }
-  if(mytbl[i,1] %in% FEA){
-    instituto[i] ="FEA"
-  }
-  if(mytbl[i,1] %in% FEAGRI){
-    instituto[i] ="Feagri"
-  }
-  if(mytbl[i,1] %in% FEC){
-    instituto[i] ="FEC"
-  }
-  if(mytbl[i,1] %in% FEEC){
-    instituto[i] ="Feec"
-  }
-  if(mytbl[i,1] %in% FEF){
-    instituto[i] ="Fef"
-  }
-  if(mytbl[i,1] %in% Fem){
-    instituto[i] ="Fem"
-  }
-  if(mytbl[i,1] %in% FEQ){
-    instituto[i] ="Feq"
-  }
-  if(mytbl[i,1] %in% FOP){
-    instituto[i] ="Fop"
-  }
-  if(mytbl[i,1] %in% IA){
-    instituto[i] ="IA"
-  }
-  if(mytbl[i,1] %in% IB){
-    instituto[i] ="Ib"
-  }
-  if(mytbl[i,1] %in% IC){
-    instituto[i] ="Ic"
-  }
-  if(mytbl[i,1] %in% IE){
-    instituto[i] ="Ie"
-  }
-  if(mytbl[i,1] %in% IEL){
-    instituto[i] ="Iel"
-  }
-  if(mytbl[i,1] %in% IFCH){
-    instituto[i] ="Ifch"
-  }
-  if(mytbl[i,1] %in% IFGW){
-    instituto[i] ="Ifgw"
-  }
-  if(mytbl[i,1] %in% IG){
-    instituto[i] ="Ig"
-  }
-  if(mytbl[i,1] %in% IQ){
-    instituto[i] ="Iq"
-  }
-  if(mytbl[i,1] %in% FCA){
-    instituto[i] ="FCA"
-  }  
-  if(mytbl[i,1] %in% Outros){
-    instituto[i] ="outros"
-  } 
-}
-graduacoes[,"Instituos"]=instituto
+mytbl = merge(mytbl, institutos)
+mytbl = subset(mytbl, nivel=='Graduacao')
+head(mytbl)
 ```
 
-Vamos calular as médias por cursos 
+Agora vamos classificar em áreas (Exatas, Biologicas, Humanas)
+```{r}
+area = rbind( data.frame(area='Exatas', codigo=c(1,2,28,29,51,10,49,108,4,40,56,11,41,
+                                                 12,48,13,43,34,42,3,39,9,5,50,53,55,8)),
+              data.frame(area='Humanas', codigo=c(16,19,44,17,47,18,7,75,22,26,64,38)),
+              data.frame(area='Biologicas',codigo=c(100,101,102,105,107,109,14,15,58,63,27,
+                                                    45,46,6)),
+              data.frame(area='Outros', codigo=c(98,92,83)))
+```
 
-```{r Totais}
+Vamos mudar a aprensentação dos dados na tabela incluindo as classificações de áreas .
+
+```{r clean}
+mytbl = merge(mytbl, area)
+mytbl = subset(mytbl, nivel=='Graduacao')
+head(mytbl)
+```
+
+##Teste para apresentar a tabeela graduacoes no html
+
+#```{r teste}
+#library(xtable)
+#xtable(mytbl)
+#```
+
+##Vamos calular as médias por cursos 
+
+#```{r Totais}
 #TOTAL = sum(graduacoes[,4])
 #SIM = sum(graduacoes[,5])
 #NAO = sum(graduacoes[,6])
-```
+#```
 
 ```{r}
 mediaSim = c()
 mediaNao = c()
-for(i in 1:length(graduacoes$codigo)){
-    mediaSim[i] = round(graduacoes[i,5]/graduacoes[i,4], 2)
-    mediaNao[i] = round(graduacoes[i,6]/graduacoes[i,4], 2)
+for(i in 1:length(mytbl$codigo)){
+    mediaSim[i] = round(mytbl[i,5]/mytbl[i,4], 2)
+    mediaNao[i] = round(mytbl[i,6]/mytbl[i,4], 2)
     }
-graduacoes[, "Média Sim"] = mediaSim
-graduacoes[, "Média Não"] = mediaNao
+mytbl[, "Média Sim"] = mediaSim
+mytbl[, "Média Não"] = mediaNao
+```
+
+Agora, vamos calcular as médias por instituto
+
+```{r média por instituto}
+
+mSim = tapply(mytbl$sim, mean) # A média dos valores por categoria
+table(mSim)
 ```
 
 ## Gauge Plots
@@ -210,3 +168,4 @@ colnames(ics) = c("lower", "upper")
 mytbl$p = p
 mytbl = cbind(mytbl, ics)
 ```
+
