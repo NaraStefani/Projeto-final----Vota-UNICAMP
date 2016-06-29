@@ -131,6 +131,91 @@ library(knitr)
 kable(tabelafinal)
 ```
 
+
+## Vamos usar o método da inversão para gerar números aleatórios segundo uma distribuição de Binomial com parâmetro $p$.*
+
+**1.** $X \sim Binomial(n,p)$, então:
+
+$$
+P(X=x) = \left( \begin{array}{c} x \\ y \end{array} \right) p^{x}(1-p)^{n-x}
+$$
+
+**2.** A função `rbin` será a geradora destes dados e é definida como segue:
+
+```{r def_rbin}
+rbin = function(n, p){
+   unif = runif(n)
+   AmostraBinomial= rep(0, n)
+   for(i in 1:n ){
+     x = 0
+     r = exp(-lambda)## aqui é a invertida da binomial? se sim, qual é ?
+     while( unif[i] > r){
+       x = x + 1
+       z = (factorial(n)/(factorial(x)*factorial(n-k)))
+       r = r + (z*((p^x)*(1-p)^(n-x)))
+     }
+     AmostraBinomial[i] = x
+   }
+   return(AmostraBinomial)
+ }
+```
+
+Adicione um exemplo de geração de dados.
+
+```{r}
+n=1000
+p = 10
+GerarDados = rbin(n, p)
+```
+
+```{r}
+hist(GerarDados, freq = FALSE, main=expression(f(x)==((factorial(n)/(factorial(x)*factorial(n-k)))*((p^x)*(1-p)^(n-x)))),
+curve((factorial(n)/(factorial(x)*factorial(n-k)))*((p^x)*(1-p)^(n-x))), add=TRUE)
+```
+
+Agora, vamos produzir um teste estatístico que possa ser utilizado para validar a hipótese de que os números gerados de fato seguem a distribuição desejada.
+
+Vamos utilizar o teste chi-quadrado para avaliar a hipótese de que os números gerados de fato seguem uma distribuição poisson com parâmetro $p$.
+
+Seja:  $$H_0: p_{i}=0.25 \forall i \; \textit{vs.} \;H_{1}: p_i\neq0.25 \: \textit{para algum i}$$
+
+Para obter os quartis teóricos dessa distribuição, fazemos:
+
+```{r}
+qp1 = qpois(.25, lambda)
+qp2 = qpois(.5, lambda)
+qp3 = qpois(.75, lambda)
+qp4 = qpois(1, lambda)
+```
+
+Os resultados são : 
+
+  * quartil 1 = `r qp1`
+  
+  * quartil 2 = `r qp2`
+  
+  * quartil 3 = `r qp3` 
+  
+  * quartil 4 = `r qp4`
+
+```{r}
+quartis = c(0,qp1,qp2,qp3,qp4)
+# fazemos isso por ser uma distribuição discreta :
+pbin1 = pbinom(qp1, p)
+pbin2 = pbinom(qp2, p) - ppois(qp1, p)
+pbin3 = pbinom(qp3, p) - ppois(qp2, p)
+pbin4 = pbinom(qp4, p) - ppois(qp3, p)
+
+resTmp = cut(GerarDados, quartis,include.lowest = TRUE)
+observadobinon  = as.integer(table(resTmp))
+esperadobinon = c(pbin1, pbin2, pbin3, pbin4)*n
+
+#aplicação do teste
+chisq.test(cbind(observadobinon,esperadobinon))
+prop.table(table(resTmp))
+```
+
+Como obtemos um p-valor >0,05 não temos evidencia para rejeitar a hipótese nula ($H_0$) de que os números gerados de fato seguem uma distribuição de poisson com parâmetro $\lambda$.
 ## Gauge Plots
 
 ```{r plot_gauge}

@@ -68,7 +68,7 @@ institutos = rbind(data.frame(instituto='IMECC', codigo=c(1,2,28,29,51)),
 
 Vamos mudar a aprensentação dos dados na tabela.
 
-```{r}
+```{r }
 mytbl = merge(mytbl, institutos)
 mytbl = subset(mytbl, nivel=='Graduacao')
 head(mytbl)
@@ -86,14 +86,30 @@ area = rbind( data.frame(area='Exatas', codigo=c(1,2,28,29,51,10,49,108,4,40,56,
 
 Vamos mudar a aprensentação dos dados na tabela incluindo as classificações de áreas .
 
-```{r}
+```{r clean}
 mytbl = merge(mytbl, area)
 mytbl = subset(mytbl, nivel=='Graduacao')
 head(mytbl)
 ```
 
+#total de sim por institutp
 
-#calculo da proporção de sim (errado)
+```{r TotalSim}
+totsim=tapply(mytbl$sim,mytbl$instituto,sum)
+```
+
+#total de votos de cada instituo
+
+```{r TotalVotos}
+totalinst=tapply(mytbl$total,mytbl$instituto,sum)
+```
+
+#proporção de sim
+
+```{r propSim}
+propsim=round(totsim/totalinst,digits = 2)
+```
+
 ```{r}
 mediaSim = c()
 mediaNao = c()
@@ -103,6 +119,14 @@ for(i in 1:length(mytbl$codigo)){
     }
 mytbl[, "Média Sim"] = mediaSim
 mytbl[, "Média Não"] = mediaNao
+```
+
+Agora, vamos calcular as médias por instituto
+
+```{r média por instituto}
+
+mSim = tapply(mytbl$sim, mean) # A média dos valores por categoria
+table(mSim)
 ```
 
 
@@ -123,6 +147,7 @@ totabs=tapply(mytbl$abstencao,mytbl$instituto,sum)
 #proporção de abstenção
 propabs=round(totabs/totalinst,digits = 2)
 
+
 tabelaproporcaosim=data.frame(propsim)
 tabelaproporcaonao=data.frame(propnao)
 tabelaproporcaoabstencao=data.frame(propabs)
@@ -130,6 +155,13 @@ tabelafinal=cbind(tabelaproporcaosim,tabelaproporcaonao,tabelaproporcaoabstencao
 library(knitr)
 kable(tabelafinal)
 ```
+
+##Vamos usar o método da inversão para simular os votos 
+```{r}
+
+```
+
+
 
 ## Gauge Plots
 
