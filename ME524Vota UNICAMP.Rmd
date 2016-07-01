@@ -184,6 +184,11 @@ N_Unicamp<- Total_Unicamp/((4*(Total_Unicamp-1)*((EMM_Unicamp)^2/(Z_Alpha_Unicam
 
 ## Intervalos de Confiança
 
+
+Um Intervalo de Confiança (IC) é um intervalo estimado de algum parâmetro da população de interesse. Em vez de estimar o parâmetro por um único valor, estima-se um intervalo no qual espera-se que o parâmetro esteja inserido com certa taxa (%) de confiabilidade.
+Um IC de N% de confiança significa que, se fizermos 100 intervalos de confiança para um parâmetro, aproximadamente N destes intervalos conterão o valor real do parâmetro.
+Para o nosso caso, os parâmetros de interesse são: a proporção de 'Sim', a proporção de 'Não' e a proporção de 'Abstenho', dentre os votos do IMECC e de cada uma das áreas de atuação.
+
 ```{r stats, echo=FALSE}
 #Intervalo de confiança para os votos do IMECC
 
