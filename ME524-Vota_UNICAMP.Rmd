@@ -208,11 +208,8 @@ icAbs = cbind(pmax(PropAbs-mes, 0), pmin(PropAbs+mes, 1))
 ```
 
 Fazendo os Intervalos de confiança para a proporção de votos do IMECC, esperamos que:
-
 - A proporção de sim esteja 95% das vezes nesse intervalo: `r icSim`.
-
 - A proporção de não esteja 95% das vezes nesse intervalo: `r icNao`.
-
 - A proporção de abstenções esteja 95% das vezes nesse intervalo: `r icAbs`.
 
 ```{r, echo=FALSE}
@@ -239,11 +236,8 @@ icAbs = cbind(pmax(PropAbs-mes, 0), pmin(PropAbs+mes, 1))
 ```
 
 Fazendo os Intervalos de confiança para os cursos da área de Exatas, esperamos que:
-
 - A proporção de sim esteja 95% das vezes nesse intervalo: `r icSim`.
-
 - A proporção de não esteja 95% das vezes nesse intervalo: `r icNao`.
-
 - A proporção de abstenções esteja 95% das vezes nesse intervalo: `r icAbs`.
 
 ```{r, echo=FALSE}
@@ -271,7 +265,6 @@ icAbs = cbind(pmax(PropAbs-mes, 0), pmin(PropAbs+mes, 1))
 ```
 
 Fazendo os Intervalos de confiança para os cursos da área de Biológicas, esperamos que:
-
 - A proporção de sim esteja 95% das vezes nesse intervalo: `r icSim`.
 
 - A proporção de não esteja 95% das vezes nesse intervalo: `r icNao`.
@@ -303,9 +296,6 @@ icAbs = cbind(pmax(PropAbs-mes, 0), pmin(PropAbs+mes, 1))
 ```
 
 Fazendo os Intervalos de confiança para os cursos da área de Humanas, esperamos que:
-
 - A proporção de sim esteja 95% das vezes nesse intervalo: `r icSim`.
-
 - A proporção de não esteja 95% das vezes nesse intervalo: `r icNao`.
-
 - A proporção de abstenções esteja 95% das vezes nesse intervalo: `r icAbs`.
