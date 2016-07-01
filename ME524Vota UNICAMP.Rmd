@@ -15,9 +15,13 @@ Este trabalho tem como objetivo analisar estatisticamente sob diferentes ângulo
 
 ```{r input, message=FALSE, warning=FALSE, echo=F, include=F}
 #setup
+#install.packages("stringr")
 library(stringr)
+#install.packages("rvest")
 library(rvest)
+#install.packages("googleVis")
 library(googleVis)
+#install.packages("leaflet")
 library(leaflet)
 page=read_html('https://votaunicamp.herokuapp.com/prev_results/')
 tbl=html_table(page)[[2]]
@@ -49,11 +53,9 @@ Para nossa análise, utilizamos a seguinte tabela:
 ```{r warning=F,echo=F,include=F}
 institutos = rbind(data.frame(instituto='IMECC', codigo=c(1,2,28,29,51)),
                    data.frame(instituto='FEM', codigo=c(10,49)),
-                   data.frame(instituto='FCA', codigo=c(100,101,102,105,107,109)),
                    data.frame(instituto='IFGW', codigo=c(108,4,40,56)),
                    data.frame(instituto='FEEC', codigo=c(11,41)),
                    data.frame(instituto='FEC', codigo=c(12,48)),
-                   data.frame(instituto='FOP', codigo=14),
                    data.frame(instituto='FEA', codigo=c(13,43)),
                    data.frame(instituto='FCM', codigo=c(15,58,63)),
                    data.frame(instituto='IFCH', codigo=c(16,19,44)),
@@ -83,8 +85,7 @@ head(mytbl)
 area = rbind( data.frame(area='Exatas', codigo=c(1,2,28,29,51,10,49,108,4,40,56,11,41,
                                                  12,48,13,43,34,42,3,39,9,5,50,53,55,8)),
               data.frame(area='Humanas', codigo=c(16,19,44,17,47,18,7,75,22,26,64,38)),
-              data.frame(area='Biologicas',codigo=c(100,101,102,105,107,109,14,15,58,63,27,
-                                                    45,46,6)),
+              data.frame(area='Biologicas',codigo=c(15,58,63,27,45,46,6)),
               data.frame(area='Outros', codigo=c(98,92,83)))
 ```
 
@@ -96,6 +97,7 @@ head(mytbl)
 ```
 
 ```{r, echo=FALSE}
+#install.packages("knitr")
 library(knitr)
 kable(mytbl)
 ```
