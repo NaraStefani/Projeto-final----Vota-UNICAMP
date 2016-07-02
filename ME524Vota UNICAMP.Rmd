@@ -137,19 +137,19 @@ totabsArea=tapply(mytbl$abstencao,mytbl$area,sum)
 propabsArea=round(totabsArea/totalArea,digits = 2)
 ```
 
-```{r}
+```{r, include=FALSE}
 tam <- function(N, Z_alpha = 1.96, B = 0.05){
   N / ((4*(N-1)*(B^2/(Z_alpha)^2)+1))
 }
 ```
 
-```{r}
+```{r, include=FALSE}
 ic <- function(total, prop){
   cbind(pmax(prop-qnorm(.975)*sqrt(1/(4*total)), 0), pmin(prop+qnorm(.975)*sqrt(1/(4*total)), 1))
 }
 ```
 
-```{r}
+```{r, include=FALSE}
 #tabela com o número de alunos por instituto
 tabela_institutos = rbind(data.frame(instituto='IMECC', Alunos = 1029),
                           data.frame(instituto='FEM', Alunos = 1236),
@@ -173,7 +173,7 @@ tabela_institutos = rbind(data.frame(instituto='IMECC', Alunos = 1029),
 
 ```
 
-```{r}
+```{r, include=FALSE}
 #tabela geral com informações dos institutos
 tabela_geral = cbind(tabela_institutos, 
                      amos_repr = round(tam(tabela_institutos$Alunos),0),
@@ -188,14 +188,14 @@ tabela_geral = cbind(tabela_institutos,
 ```
 
 
-```{r}
+```{r, include=FALSE}
 #tabela com o número de alunos por instituto
 tabela_areas = rbind(data.frame(area = 'EXATAS', Alunos = 8037),
                           data.frame(area ='HUMANAS', Alunos = 3116),
                           data.frame(area = 'BIOLOGICAS', Alunos = 2159))
 ```
 
-```{r}
+```{r, include=FALSE}
 #tabela geral com informações das áreas
 tabela_AreasGeral = cbind(tabela_areas, 
                      amos_repr = round(tam(tabela_areas$Alunos),0),
@@ -214,10 +214,13 @@ tabela_AreasGeral = cbind(tabela_areas,
 
 Gráfico de votos por instituto
 
-```{r Grafico1, echo=FALSE}
+```{r, include=FALSE}
 #grafico dos votos dos institutos
 #install.packages("plotly")
 library(plotly)
+```
+
+```{r grafico 1, echo=FALSE}
 graficoinstitutos <- plot_ly(x = c("IMECC", "FEM", "IFGW", "FEEC", "FEC", "FEA", "FCM",
                                    "IFCH", "IE", "IEL", "IA", "FEF", "IC", "FEQ", "IB",
                                    "IQ", "IG", "FEAGRI", "FE"),
@@ -245,7 +248,7 @@ graficoinstitutos3
 
 Gráfico de votos por áreas
 
-```{r}
+```{r, echo=FALSE}
 #grafico dos votos das áreas
 graficoareas <- plot_ly(x = c("EXATAS", "HUMANAS", "BIOLOGICAS"),
                              y = c(tabela_AreasGeral$tot_sim),
@@ -270,7 +273,7 @@ graficoareas3
 
 ## Gauge Plots
 
-```{r plot_gauge,warning=F,echo=F,include=F}
+```{r plot_gauge, echo=FALSE}
 tbl0 = subset(mytbl, nivel=='Graduacao')
 tbl0$pnao = round(tbl0$nao/tbl0$total*100, 0)
 gauge = gvisGauge(tbl0[, c('curso', 'pnao')], 'curso', 'nao',
@@ -280,13 +283,13 @@ gauge = gvisGauge(tbl0[, c('curso', 'pnao')], 'curso', 'nao',
 ```
 
 
-```{r}
+```{r, echo=FALSE}
 plot(gauge)
 ```
 
 ## Obtenção de Dados Geográficos
 
-```{r enderecos,warning=F,echo=F,include=F}
+```{r enderecos, echo=FALSE}
 ends = data.frame(instituto=c('IMECC', 'FEM','FEF', 'IA', 'IEL', 'IFCH', 'IFGW', 'IQ',
                               'IB', 'FEEC', 'FEQ', 'FE', 'IE', 'IC', 'FEC', 'FEAGRI',
                               'FCM','IG', 'FEA'),
@@ -313,7 +316,7 @@ map
 
 Nesta etapa buscamos encontrar um tamanho mínimo de amostra para estimar a proporção de SIM e de NÃO,tanto para o número total de estudantes da Unicamp, quanto para o total de alunos do Imecc. Buscamos assim ter um número para indicar um quórum mínimo paras as assembléias realizadas na Universidade para que estas sejam realmente representativas.
 
-```{r tam_amostras}
+```{r tam_amostras, include=FALSE}
 #Amostra para o Imecc
 Total_Imecc<-1029
 EMM_Imecc<-seq(from= 0.01, to=0.05, by=0.01)
