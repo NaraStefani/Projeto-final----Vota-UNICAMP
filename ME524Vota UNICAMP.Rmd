@@ -13,7 +13,7 @@ Neste site, é possível colocar para votação aberta as pautas colocadas nas a
 Este trabalho tem como objetivo analisar estatisticamente sob diferentes ângulos os resultados presentes no já citado site *Vota* *UNICAMP*. O principal tópico a ser analisado é a comparação dos comportamentos dos estudantes de diferentes institutos e áreas de atuação (exatas, humanas ou biológicas) com relação ao posicionamento em relação à greve. Para isso, serão utilizados procedimentos estatísticos como testes de hipóteses e intervalos de confiança, além de gráficos, para melhor visualização dos dados, a serem mais detalhadamente explicados posteriormente.
 
 
-```{r input, message=FALSE, warning=FALSE, echo=F, include=F}
+```{r input, message = FALSE, warning = FALSE, echo = F, include = F}
 #setup
 #install.packages("stringr")
 library(stringr)
@@ -23,21 +23,20 @@ library(rvest)
 library(googleVis)
 #install.packages("leaflet")
 library(leaflet)
-page=read_html('https://votaunicamp.herokuapp.com/prev_results/')
-tbl=html_table(page)[[2]]
+page = read_html('https://votaunicamp.herokuapp.com/prev_results/')
+tbl = html_table(page)[[2]]
 head(tbl)
 ```
 
-
-```{r format,warning=F,echo=F,include=F}
+```{r format, warning = F,echo = F,include = F}
 ## Formatação de Dados
-mytbl = data.frame(codigo=as.integer(str_extract(tbl$Curso, "^\\d+")),
-                   nivel=NA,
-                   curso=gsub("^(\\d+) - (.*)$", "\\2", tbl$Curso),
-                   total=tbl$Total,
-                   sim=as.integer(str_extract(tbl$Sim, "^\\d+")),
-                   nao=as.integer(str_extract(tbl$Não, "^\\d+")),
-                   abstencao=as.integer(str_extract(tbl$Abstenções, "^\\d+")))
+mytbl = data.frame(codigo = as.integer(str_extract(tbl$Curso, "^\\d+")),
+                   nivel = NA,
+                   curso = gsub("^(\\d+) - (.*)$", "\\2", tbl$Curso),
+                   total = tbl$Total,
+                   sim = as.integer(str_extract(tbl$Sim, "^\\d+")),
+                   nao = as.integer(str_extract(tbl$Não, "^\\d+")),
+                   abstencao = as.integer(str_extract(tbl$Abstenções, "^\\d+")))
 nivel = str_extract(mytbl$curso, "(Dou|Mes)[a-z]+")
 nivel[grepl("Mes", nivel)] = "Mestrado"
 nivel[grepl("Dou", nivel)] = "Doutorado"
@@ -50,41 +49,42 @@ head(mytbl)
 
 Para nossa análise, utilizamos a seguinte tabela:
 
-```{r warning=F,echo=F,include=F}
-institutos = rbind(data.frame(instituto='IMECC', codigo=c(1,2,28,29,51)),
-                   data.frame(instituto='FEM', codigo=c(10,49)),
-                   data.frame(instituto='IFGW', codigo=c(108,4,40,56)),
-                   data.frame(instituto='FEEC', codigo=c(11,41)),
-                   data.frame(instituto='FEC', codigo=c(12,48)),
-                   data.frame(instituto='FEA', codigo=c(13,43)),
-                   data.frame(instituto='FCM', codigo=c(15,58,63)),
-                   data.frame(instituto='IFCH', codigo=c(16,19,44)),
-                   data.frame(instituto='IE', codigo=c(17,47)),
-                   data.frame(instituto='IEL', codigo=c(18,7,75)),
-                   data.frame(instituto='IA', codigo=c(22,26,64)),
-                   data.frame(instituto='FEF', codigo=c(27,45)),
-                   data.frame(instituto='IC', codigo=c(34,42,3)),
-                   data.frame(instituto='FEQ', codigo=c(39,9)),
-                   data.frame(instituto='IB', codigo=c(46,6)),
-                   data.frame(instituto='IQ', codigo=c(5,50)),
-                   data.frame(instituto='IG', codigo=c(53,55)),
-                   data.frame(instituto='FEAGRI', codigo=8),
-                   data.frame(instituto='FE', codigo=38))
+```{r warning = F, echo = F, include = F}
+institutos = rbind(data.frame(instituto = 'IMECC', codigo = c(1,2,28,29,51)),
+                   data.frame(instituto ='FEM', codigo = c(10,49)),
+                   data.frame(instituto = 'IFGW', codigo = c(108,4,40,56)),
+                   data.frame(instituto = 'FEEC', codigo = c(11,41)),
+                   data.frame(instituto = 'FEC', codigo = c(12,48)),
+                   data.frame(instituto = 'FEA', codigo = c(13,43)),
+                   data.frame(instituto = 'FCM', codigo = c(15,58,63)),
+                   data.frame(instituto = 'IFCH', codigo = c(16,19,44)),
+                   data.frame(instituto = 'IE', codigo = c(17,47)),
+                   data.frame(instituto = 'IEL', codigo = c(18,7,75)),
+                   data.frame(instituto = 'IA', codigo = c(22,26,64)),
+                   data.frame(instituto = 'FEF', codigo = c(27,45)),
+                   data.frame(instituto = 'IC', codigo = c(34,42,3)),
+                   data.frame(instituto = 'FEQ', codigo = c(39,9)),
+                   data.frame(instituto = 'IB', codigo = c(46,6)),
+                   data.frame(instituto = 'IQ', codigo = c(5,50)),
+                   data.frame(instituto = 'IG', codigo = c(53,55)),
+                   data.frame(instituto = 'FEAGRI', codigo = 8),
+                   data.frame(instituto = 'FE', codigo = 38))
 
 ```
 
-```{r warning=F,echo=F,include=F}
+```{r warning = F, echo = F, include = F}
 #Vamos mudar a aprensentação dos dados na tabela
 mytbl = merge(mytbl, institutos)
-mytbl = subset(mytbl, nivel=='Graduacao')
+mytbl = subset(mytbl, nivel == 'Graduacao')
 head(mytbl)
 ```
 
-```{r warning=F,echo=F,include=F}
-area = rbind( data.frame(area='Exatas', codigo=c(1,2,28,29,51,10,49,108,4,40,56,11,41,
-                                                 12,48,13,43,34,42,3,39,9,5,50,53,55,8)),
-              data.frame(area='Humanas', codigo=c(16,19,44,17,47,18,7,75,22,26,64,38)),
-              data.frame(area='Biologicas',codigo=c(15,58,63,27,45,46,6)))
+```{r warning = F, echo = F, include = F}
+area = rbind( data.frame(area = 'Exatas', codigo = c(1,2,28,29,51,10,49,108,4,40,56,11,41,
+                                                    12,48,13,43,34,42,3,39,9,5,50,53,
+                                                    55,8)),
+              data.frame(area = 'Humanas', codigo = c(16,19,44,17,47,18,7,75,22,26,64,38)),
+              data.frame(area = 'Biologicas',codigo = c(15,58,63,27,45,46,6)))
 ```
 
 ```{r warning=F,echo=F,include=F}
