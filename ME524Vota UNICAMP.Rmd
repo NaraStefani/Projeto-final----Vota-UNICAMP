@@ -463,9 +463,6 @@ Fazendo os Intervalos de confiança para os cursos da área de Humanas, esperamo
 
 #Teste de Hipotese para proporçao de votos no Imecc
 
-
-
-
   Como visto nas últimas semanas o Instituto De Matemática-Estatística e Computação Científica foi fortemente afetado pelos piquetes(nao sei se e assim que se escreve), manifestçoẽs e também por quentes discussoẽs por parte dos docentes do instituto, que queriam ministrar suas aulas para alunos que tinham interesse nas mesmas e alegavam nao ser a favor da greve, com os grevistas que com piquetes impediam os mesmos de exercerem suas atividades, alegando que estariam "desrepeitando" o movimento grevista. 
   Para verificar a posicao dos alunos do instituto em relação a greve vamos utilizar o mesmo procedimento estatístico que foi utilizado para o geral da Unicamp. 
   Iremos definir como:
