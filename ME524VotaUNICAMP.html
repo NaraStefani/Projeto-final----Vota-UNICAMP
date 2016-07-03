@@ -131,12 +131,15 @@ $(document).ready(function () {
 
 <div id="introducao" class="section level2">
 <h2>Introdução</h2>
-<p>Nos últimos meses, a Universidade Estadual de Campinas (UNICAMP) foi tomada pelo movimento grevista, que protesta contra o anúncio de corte de verbas, por um programa de cotas étnico-raciais e permanência estudantil. Em cada instituto, são realizadas assembleias estudantis, nas quais os alunos votam a favor ou conta a greve. Entretanto, muitos não conseguem participar. Essa falta de adesão gera vários questionamentos sobre a representatividade desses votos. Para isso, foi criado o site <a href="https://votaunicamp.herokuapp.com/">votaunicamp</a>, uma plataforma independente com o objetivo de tornar mais acessíveis o voto e as informações oferecer um complemento democrático às assembleias da UNICAMP. Neste site, é possível colocar para votação aberta as pautas colocadas nas assembleias e postar opiniões e argumentos sobre os temas em pauta. Além disso, os usuários podem alterar seu votos: basta votar novamente e o voto anterior será alterado. Apenas alunos da UNICAMP podem votar.</p>
+<p>Nos últimos meses, a Universidade Estadual de Campinas (UNICAMP) foi tomada pelo movimento grevista, que protesta contra o anúncio de corte de verbas, por um programa de cotas étnico-raciais e permanência estudantil.</p>
+<p>Em cada instituto, são realizadas assembleias estudantis, nas quais os alunos votam a favor ou contra a greve. Entretanto, muitos são os que não participam. Essa falta de adesão gera vários questionamentos sobre a representatividade desses votos.</p>
+<p>Em função disso, foi criado o site <a href="https://votaunicamp.herokuapp.com/">votaunicamp</a>, uma plataforma independente com o objetivo de tornar mais acessíveis o voto e as informações e oferecer um complemento democrático às assembleias da UNICAMP, onde os estudantes votam “Sim”, “Não” ou “Abstenho” em relação a ser a favor da greve.</p>
+<p>Neste site, também é possível colocar para votação aberta as pautas colocadas nas assembleias e postar opiniões e argumentos sobre os temas em pauta. Além disso, os usuários podem alterar seu votos: ao votar novamente, o voto anterior é alterado. Apenas alunos da UNICAMP podem votar.</p>
 </div>
 <div id="objetivo" class="section level2">
 <h2>Objetivo</h2>
 <p>Este trabalho tem como objetivo analisar estatisticamente sob diferentes ângulos os resultados presentes no já citado site <em>Vota</em> <em>UNICAMP</em>. O principal tópico a ser analisado é a comparação dos comportamentos dos estudantes de diferentes institutos e áreas de atuação (exatas, humanas ou biológicas) com relação ao posicionamento em relação à greve. Para isso, serão utilizados procedimentos estatísticos como testes de hipóteses e intervalos de confiança, além de gráficos, para melhor visualização dos dados, a serem mais detalhadamente explicados posteriormente.</p>
-<p>Para nossa análise, utilizamos a seguinte tabela:</p>
+<p><strong>Para nossa análise, utilizamos a seguinte tabela:</strong></p>
 <table>
 <thead>
 <tr class="header">
@@ -650,50 +653,370 @@ $(document).ready(function () {
 </tbody>
 </table>
 </div>
-<div id="graficos" class="section level1">
-<h1>Gráficos</h1>
-<p>Gráfico de votos por instituto</p>
-<div id="htmlwidget-9896" style="width:672px;height:480px;" class="plotly html-widget"></div>
-<script type="application/json" data-for="htmlwidget-9896">{"x":{"data":[{"type":"bar","inherit":false,"x":["IMECC","FEM","IFGW","FEEC","FEC","FEA","FCM","IFCH","IE","IEL","IA","FEF","IC","FEQ","IB","IQ","IG","FEAGRI","FE"],"y":[12,18,10,7,7,1,0,13,8,7,8,1,11,4,8,12,3,1,0],"name":"Sim"},{"x":["IMECC","FEM","IFGW","FEEC","FEC","FEA","FCM","IFCH","IE","IEL","IA","FEF","IC","FEQ","IB","IQ","IG","FEAGRI","FE"],"y":[36,39,14,39,10,10,7,4,11,2,1,7,36,7,13,20,1,6,1],"name":"Não","type":"bar"},{"x":["IMECC","FEM","IFGW","FEEC","FEC","FEA","FCM","IFCH","IE","IEL","IA","FEF","IC","FEQ","IB","IQ","IG","FEAGRI","FE"],"y":[3,0,4,1,0,0,0,0,0,0,2,0,3,0,2,1,0,0,0],"name":"Abstenções","type":"bar"}],"layout":{"xaxis":{"title":["c(\"IMECC\", \"FEM\", \"IFGW\", \"FEEC\", \"FEC\", \"FEA\", \"FCM\", \"IFCH\", ","    \"IE\", \"IEL\", \"IA\", \"FEF\", \"IC\", \"FEQ\", \"IB\", \"IQ\", \"IG\", ","    \"FEAGRI\", \"FE\")"]},"yaxis":{"title":"c(tabela_geral$tot_sim)"},"margin":{"b":40,"l":60,"t":25,"r":10}},"url":null,"width":null,"height":null,"source":"A","config":{"modeBarButtonsToRemove":["sendDataToCloud"]},"base_url":"https://plot.ly"},"evals":[],"jsHooks":[]}</script>
-<p>Gráfico de votos por áreas</p>
-<div id="htmlwidget-6695" style="width:672px;height:480px;" class="plotly html-widget"></div>
-<script type="application/json" data-for="htmlwidget-6695">{"x":{"data":[{"type":"bar","inherit":false,"x":["EXATAS","HUMANAS","BIOLOGICAS"],"y":[86,36,9],"name":"Sim"},{"x":["EXATAS","HUMANAS","BIOLOGICAS"],"y":[218,19,27],"name":"Não","type":"bar"},{"x":["EXATAS","HUMANAS","BIOLOGICAS"],"y":[12,2,2],"name":"Abstenções","type":"bar"}],"layout":{"xaxis":{"title":"c(\"EXATAS\", \"HUMANAS\", \"BIOLOGICAS\")"},"yaxis":{"title":"c(tabela_AreasGeral$tot_sim)"},"margin":{"b":40,"l":60,"t":25,"r":10}},"url":null,"width":null,"height":null,"source":"A","config":{"modeBarButtonsToRemove":["sendDataToCloud"]},"base_url":"https://plot.ly"},"evals":[],"jsHooks":[]}</script>
-<div id="gauge-plots" class="section level2">
-<h2>Gauge Plots</h2>
-<pre><code>## starting httpd help server ...</code></pre>
-<pre><code>##  done</code></pre>
-</div>
-<div id="obtencao-de-dados-geograficos" class="section level2">
-<h2>Obtenção de Dados Geográficos</h2>
-<div id="htmlwidget-5675" style="width:672px;height:480px;" class="leaflet html-widget"></div>
-<script type="application/json" data-for="htmlwidget-5675">{"x":{"calls":[{"method":"addTiles","args":["http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",null,null,{"minZoom":0,"maxZoom":18,"maxNativeZoom":null,"tileSize":256,"subdomains":"abc","errorTileUrl":"","tms":false,"continuousWorld":false,"noWrap":false,"zoomOffset":0,"zoomReverse":false,"opacity":1,"zIndex":null,"unloadInvisibleTiles":null,"updateWhenIdle":null,"detectRetina":false,"reuseTiles":false,"attribution":"&copy; <a href=\"http://openstreetmap.org\">OpenStreetMap\u003c/a> contributors, <a href=\"http://creativecommons.org/licenses/by-sa/2.0/\">CC-BY-SA\u003c/a>"}]},{"method":"addCircleMarkers","args":[[-22.81583,-22.81938,-22.81476,-22.815127,-22.815121,-22.814924,-22.816778,-22.818993,-22.819333,-22.821286,-22.820336,-22.816466,-22.814952,-22.814663,-22.816503,-22.819405,-22.831345,-22.813084,-22.820475],[-47.06769,-47.06592,-47.07333,-47.070112,-47.069397,-47.068303,-47.067328,-47.068038,-47.069402,-47.065894,-47.065617,-47.065728,-47.066153,-47.064811,-47.061943,-47.060955,-47.062188,-47.068574,-47.067189],10,null,null,{"lineCap":null,"lineJoin":null,"clickable":true,"pointerEvents":null,"className":"","stroke":true,"color":"#03F","weight":5,"opacity":0.5,"fill":true,"fillColor":"#03F","fillOpacity":0.2,"dashArray":null},null,null,["IMECC","FEM","FEF","IA","IEL","IFCH","IFGW","IQ","IB","FEEC","FEQ","FE","IE","IC","FEC","FEAGRI","FCM","IG","FEA"]]}],"limits":{"lat":[-22.831345,-22.813084],"lng":[-47.07333,-47.060955]}},"evals":[],"jsHooks":[]}</script>
-</div>
 <div id="tamanho-minimo-da-amostra" class="section level2">
 <h2>Tamanho Mínimo da Amostra</h2>
-<p>Nesta etapa buscamos encontrar um tamanho mínimo de amostra para estimar a proporção de SIM e de NÃO,tanto para o número total de estudantes da Unicamp, quanto para o total de alunos do Imecc. Buscamos assim ter um número para indicar um quórum mínimo paras as assembléias realizadas na Universidade para que estas sejam realmente representativas.</p>
+<p>Nesta primeira etapa, calculamos o quórum de pessoas mínimo necessário para que as assembleias realizadas na Universidade sejam representativas. Além disso, calculamos também as proporções de votos sim, não e abstenções. Dividimos esses resultados em duas tabelas, uma categorizada por institutos e outra por áreas como podemos ver a seguir:</p>
+<div id="tabela-classificada-por-institutos" class="section level4">
+<h4>Tabela classificada por institutos</h4>
+<table>
+<thead>
+<tr class="header">
+<th align="left">Instituto</th>
+<th align="right">Nº de matriculados</th>
+<th align="right">Amostra representativa</th>
+<th align="right">Total de votos</th>
+<th align="right">Total de sim</th>
+<th align="right">Total de não</th>
+<th align="right">Total de abstenções</th>
+<th align="right">Proporção de sim</th>
+<th align="right">Porporção de não</th>
+<th align="right">Proporção de abstenções</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">IMECC</td>
+<td align="right">1029</td>
+<td align="right">280</td>
+<td align="right">51</td>
+<td align="right">12</td>
+<td align="right">36</td>
+<td align="right">3</td>
+<td align="right">0.24</td>
+<td align="right">0.71</td>
+<td align="right">0.06</td>
+</tr>
+<tr class="even">
+<td align="left">FEM</td>
+<td align="right">1236</td>
+<td align="right">293</td>
+<td align="right">57</td>
+<td align="right">18</td>
+<td align="right">39</td>
+<td align="right">0</td>
+<td align="right">0.32</td>
+<td align="right">0.68</td>
+<td align="right">0.00</td>
+</tr>
+<tr class="odd">
+<td align="left">IFGW</td>
+<td align="right">624</td>
+<td align="right">238</td>
+<td align="right">28</td>
+<td align="right">10</td>
+<td align="right">14</td>
+<td align="right">4</td>
+<td align="right">0.36</td>
+<td align="right">0.50</td>
+<td align="right">0.14</td>
+</tr>
+<tr class="even">
+<td align="left">FEEC</td>
+<td align="right">667</td>
+<td align="right">244</td>
+<td align="right">47</td>
+<td align="right">7</td>
+<td align="right">39</td>
+<td align="right">1</td>
+<td align="right">0.15</td>
+<td align="right">0.83</td>
+<td align="right">0.02</td>
+</tr>
+<tr class="odd">
+<td align="left">FEC</td>
+<td align="right">724</td>
+<td align="right">251</td>
+<td align="right">17</td>
+<td align="right">7</td>
+<td align="right">10</td>
+<td align="right">0</td>
+<td align="right">0.41</td>
+<td align="right">0.59</td>
+<td align="right">0.00</td>
+</tr>
+<tr class="even">
+<td align="left">FEA</td>
+<td align="right">712</td>
+<td align="right">250</td>
+<td align="right">11</td>
+<td align="right">1</td>
+<td align="right">10</td>
+<td align="right">0</td>
+<td align="right">0.09</td>
+<td align="right">0.91</td>
+<td align="right">0.00</td>
+</tr>
+<tr class="odd">
+<td align="left">FCM</td>
+<td align="right">1069</td>
+<td align="right">283</td>
+<td align="right">7</td>
+<td align="right">0</td>
+<td align="right">7</td>
+<td align="right">0</td>
+<td align="right">0.00</td>
+<td align="right">1.00</td>
+<td align="right">0.00</td>
+</tr>
+<tr class="even">
+<td align="left">IFCH</td>
+<td align="right">898</td>
+<td align="right">269</td>
+<td align="right">17</td>
+<td align="right">13</td>
+<td align="right">4</td>
+<td align="right">0</td>
+<td align="right">0.76</td>
+<td align="right">0.24</td>
+<td align="right">0.00</td>
+</tr>
+<tr class="odd">
+<td align="left">IE</td>
+<td align="right">575</td>
+<td align="right">231</td>
+<td align="right">19</td>
+<td align="right">8</td>
+<td align="right">11</td>
+<td align="right">0</td>
+<td align="right">0.42</td>
+<td align="right">0.58</td>
+<td align="right">0.00</td>
+</tr>
+<tr class="even">
+<td align="left">IEL</td>
+<td align="right">552</td>
+<td align="right">227</td>
+<td align="right">9</td>
+<td align="right">7</td>
+<td align="right">2</td>
+<td align="right">0</td>
+<td align="right">0.78</td>
+<td align="right">0.22</td>
+<td align="right">0.00</td>
+</tr>
+<tr class="odd">
+<td align="left">IA</td>
+<td align="right">623</td>
+<td align="right">238</td>
+<td align="right">11</td>
+<td align="right">8</td>
+<td align="right">1</td>
+<td align="right">2</td>
+<td align="right">0.73</td>
+<td align="right">0.09</td>
+<td align="right">0.18</td>
+</tr>
+<tr class="even">
+<td align="left">FEF</td>
+<td align="right">596</td>
+<td align="right">234</td>
+<td align="right">8</td>
+<td align="right">1</td>
+<td align="right">7</td>
+<td align="right">0</td>
+<td align="right">0.12</td>
+<td align="right">0.88</td>
+<td align="right">0.00</td>
+</tr>
+<tr class="odd">
+<td align="left">IC</td>
+<td align="right">878</td>
+<td align="right">267</td>
+<td align="right">50</td>
+<td align="right">11</td>
+<td align="right">36</td>
+<td align="right">3</td>
+<td align="right">0.22</td>
+<td align="right">0.72</td>
+<td align="right">0.06</td>
+</tr>
+<tr class="even">
+<td align="left">FEQ</td>
+<td align="right">633</td>
+<td align="right">239</td>
+<td align="right">11</td>
+<td align="right">4</td>
+<td align="right">7</td>
+<td align="right">0</td>
+<td align="right">0.36</td>
+<td align="right">0.64</td>
+<td align="right">0.00</td>
+</tr>
+<tr class="odd">
+<td align="left">IB</td>
+<td align="right">494</td>
+<td align="right">216</td>
+<td align="right">23</td>
+<td align="right">8</td>
+<td align="right">13</td>
+<td align="right">2</td>
+<td align="right">0.35</td>
+<td align="right">0.57</td>
+<td align="right">0.09</td>
+</tr>
+<tr class="even">
+<td align="left">IQ</td>
+<td align="right">656</td>
+<td align="right">243</td>
+<td align="right">33</td>
+<td align="right">12</td>
+<td align="right">20</td>
+<td align="right">1</td>
+<td align="right">0.36</td>
+<td align="right">0.61</td>
+<td align="right">0.03</td>
+</tr>
+<tr class="odd">
+<td align="left">IG</td>
+<td align="right">452</td>
+<td align="right">208</td>
+<td align="right">4</td>
+<td align="right">3</td>
+<td align="right">1</td>
+<td align="right">0</td>
+<td align="right">0.75</td>
+<td align="right">0.25</td>
+<td align="right">0.00</td>
+</tr>
+<tr class="even">
+<td align="left">FEAGRI</td>
+<td align="right">426</td>
+<td align="right">202</td>
+<td align="right">7</td>
+<td align="right">1</td>
+<td align="right">6</td>
+<td align="right">0</td>
+<td align="right">0.14</td>
+<td align="right">0.86</td>
+<td align="right">0.00</td>
+</tr>
+<tr class="odd">
+<td align="left">FE</td>
+<td align="right">468</td>
+<td align="right">211</td>
+<td align="right">1</td>
+<td align="right">0</td>
+<td align="right">1</td>
+<td align="right">0</td>
+<td align="right">0.00</td>
+<td align="right">1.00</td>
+<td align="right">0.00</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="tabela-classificada-por-areas" class="section level4">
+<h4>Tabela classificada por Áreas</h4>
+<table>
+<thead>
+<tr class="header">
+<th align="left">Áreas</th>
+<th align="right">Nº de matriculados</th>
+<th align="right">Amostra representativa</th>
+<th align="right">Total de votos</th>
+<th align="right">Total de sim</th>
+<th align="right">Total de não</th>
+<th align="right">Total de abstenções</th>
+<th align="right">Proporção de sim</th>
+<th align="right">Porporção de não</th>
+<th align="right">Proporção de abstenções</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">EXATAS</td>
+<td align="right">8037</td>
+<td align="right">367</td>
+<td align="right">316</td>
+<td align="right">86</td>
+<td align="right">218</td>
+<td align="right">12</td>
+<td align="right">0.27</td>
+<td align="right">0.69</td>
+<td align="right">0.04</td>
+</tr>
+<tr class="even">
+<td align="left">HUMANAS</td>
+<td align="right">3116</td>
+<td align="right">342</td>
+<td align="right">57</td>
+<td align="right">36</td>
+<td align="right">19</td>
+<td align="right">2</td>
+<td align="right">0.63</td>
+<td align="right">0.33</td>
+<td align="right">0.04</td>
+</tr>
+<tr class="odd">
+<td align="left">BIOLOGICAS</td>
+<td align="right">2159</td>
+<td align="right">326</td>
+<td align="right">38</td>
+<td align="right">9</td>
+<td align="right">27</td>
+<td align="right">2</td>
+<td align="right">0.24</td>
+<td align="right">0.71</td>
+<td align="right">0.05</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div id="graficos" class="section level2">
+<h2>Gráficos</h2>
+<p>A seguir, apresentamos os gráficos que representam a distribuição de votos por instituto, a divisão de votos por área de atuação e por fim a localização gerográfica de cada um dos institutos da UNICAMP.</p>
+<div id="grafico-de-votos-por-instituto" class="section level4">
+<h4>Gráfico de votos por instituto</h4>
+<div id="htmlwidget-6420" style="width:672px;height:480px;" class="plotly html-widget"></div>
+<script type="application/json" data-for="htmlwidget-6420">{"x":{"data":[{"type":"bar","inherit":false,"x":["IMECC","FEM","IFGW","FEEC","FEC","FEA","FCM","IFCH","IE","IEL","IA","FEF","IC","FEQ","IB","IQ","IG","FEAGRI","FE"],"y":[12,18,10,7,7,1,0,13,8,7,8,1,11,4,8,12,3,1,0],"name":"Sim"},{"x":["IMECC","FEM","IFGW","FEEC","FEC","FEA","FCM","IFCH","IE","IEL","IA","FEF","IC","FEQ","IB","IQ","IG","FEAGRI","FE"],"y":[36,39,14,39,10,10,7,4,11,2,1,7,36,7,13,20,1,6,1],"name":"Não","type":"bar"},{"x":["IMECC","FEM","IFGW","FEEC","FEC","FEA","FCM","IFCH","IE","IEL","IA","FEF","IC","FEQ","IB","IQ","IG","FEAGRI","FE"],"y":[3,0,4,1,0,0,0,0,0,0,2,0,3,0,2,1,0,0,0],"name":"Abstenções","type":"bar"}],"layout":{"autosize":false,"width":1000,"height":500,"title":"Votos por Instituto","font":{"family":"Courier New, monospace","size":22},"xaxis":{"title":"Institutos","titlefont":{"family":"Courier New, monospace","size":18}},"yaxis":{"title":"Número de Votos","titlefont":{"family":"Courier New, monospace","size":18}},"margin":{"b":110,"l":60,"t":110,"r":50,"pad":4}},"url":null,"width":null,"height":null,"source":"A","config":{"modeBarButtonsToRemove":["sendDataToCloud"]},"base_url":"https://plot.ly"},"evals":[],"jsHooks":[]}</script>
+</div>
+<div id="grafico-de-votos-por-areas" class="section level4">
+<h4>Gráfico de votos por áreas</h4>
+<div id="htmlwidget-1380" style="width:672px;height:480px;" class="plotly html-widget"></div>
+<script type="application/json" data-for="htmlwidget-1380">{"x":{"data":[{"type":"bar","inherit":false,"x":["EXATAS","HUMANAS","BIOLOGICAS"],"y":[86,36,9],"name":"Sim"},{"x":["EXATAS","HUMANAS","BIOLOGICAS"],"y":[218,19,27],"name":"Não","type":"bar"},{"x":["EXATAS","HUMANAS","BIOLOGICAS"],"y":[12,2,2],"name":"Abstenções","type":"bar"}],"layout":{"title":"Votos por Áreas","font":{"family":"Courier New, monospace","size":22},"xaxis":{"title":"Áreas","titlefont":{"family":"Courier New, monospace","size":18}},"yaxis":{"title":"Número de Votos","titlefont":{"family":"Courier New, monospace","size":18}},"margin":{"b":110,"l":60,"t":110,"r":50,"pad":4}},"url":null,"width":null,"height":null,"source":"A","config":{"modeBarButtonsToRemove":["sendDataToCloud"]},"base_url":"https://plot.ly"},"evals":[],"jsHooks":[]}</script>
+</div>
+</div>
+<div id="dados-geograficos" class="section level2">
+<h2>Dados Geográficos</h2>
+<div id="htmlwidget-8396" style="width:672px;height:480px;" class="leaflet html-widget"></div>
+<script type="application/json" data-for="htmlwidget-8396">{"x":{"calls":[{"method":"addTiles","args":["http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",null,null,{"minZoom":0,"maxZoom":18,"maxNativeZoom":null,"tileSize":256,"subdomains":"abc","errorTileUrl":"","tms":false,"continuousWorld":false,"noWrap":false,"zoomOffset":0,"zoomReverse":false,"opacity":1,"zIndex":null,"unloadInvisibleTiles":null,"updateWhenIdle":null,"detectRetina":false,"reuseTiles":false,"attribution":"&copy; <a href=\"http://openstreetmap.org\">OpenStreetMap\u003c/a> contributors, <a href=\"http://creativecommons.org/licenses/by-sa/2.0/\">CC-BY-SA\u003c/a>"}]},{"method":"addCircleMarkers","args":[[-22.81583,-22.81938,-22.81476,-22.815127,-22.815121,-22.814924,-22.816778,-22.818993,-22.819333,-22.821286,-22.820336,-22.816466,-22.814952,-22.814663,-22.816503,-22.819405,-22.831345,-22.813084,-22.820475],[-47.06769,-47.06592,-47.07333,-47.070112,-47.069397,-47.068303,-47.067328,-47.068038,-47.069402,-47.065894,-47.065617,-47.065728,-47.066153,-47.064811,-47.061943,-47.060955,-47.062188,-47.068574,-47.067189],10,null,null,{"lineCap":null,"lineJoin":null,"clickable":true,"pointerEvents":null,"className":"","stroke":true,"color":"#03F","weight":5,"opacity":0.5,"fill":true,"fillColor":"#03F","fillOpacity":0.2,"dashArray":null},null,null,["IMECC","FEM","FEF","IA","IEL","IFCH","IFGW","IQ","IB","FEEC","FEQ","FE","IE","IC","FEC","FEAGRI","FCM","IG","FEA"]]}],"limits":{"lat":[-22.831345,-22.813084],"lng":[-47.07333,-47.060955]}},"evals":[],"jsHooks":[]}</script>
 </div>
 <div id="intervalos-de-confianca" class="section level2">
 <h2>Intervalos de Confiança</h2>
-<p>Um Intervalo de Confiança (IC) é um intervalo estimado de algum parâmetro da população de interesse. Em vez de estimar o parâmetro por um único valor, estima-se um intervalo no qual espera-se que o parâmetro esteja inserido com certa taxa (%) de confiabilidade. Um IC de N% de confiança significa que, se fizermos 100 intervalos de confiança para um parâmetro, aproximadamente N destes intervalos conterão o valor real do parâmetro. Para o nosso caso, os parâmetros de interesse são: a proporção de ‘Sim’, a proporção de ‘Não’ e a proporção de ‘Abstenho’, dentre os votos do IMECC e de cada uma das áreas de atuação.</p>
+<p>Um Intervalo de Confiança (IC) é um intervalo estimado de algum parâmetro da população de interesse. Em vez de estimar o parâmetro por um único valor, estima-se um intervalo no qual espera-se que o parâmetro esteja inserido com certa taxa (%) de confiabilidade.</p>
+<p>Um IC de N% de confiança significa que, se fizermos 100 intervalos de confiança para um parâmetro, aproximadamente N destes intervalos conterão o valor real do parâmetro.</p>
+<p>Para o nosso caso, os parâmetros de interesse são: a proporção de ‘Sim’, a proporção de ‘Não’ e a proporção de ‘Abstenho’, dentre os votos do IMECC e de cada uma das áreas de atuação.</p>
+<div id="intervalo-de-confianca---imecc" class="section level4">
+<h4>Intervalo de confiança - IMECC</h4>
 <p>Fazendo os Intervalos de confiança para a proporção de votos do IMECC, esperamos que:</p>
 <ul>
 <li><p>A proporção de sim esteja 95% das vezes nesse intervalo: 0.0980692, 0.372519.</p></li>
 <li><p>A proporção de não esteja 95% das vezes nesse intervalo: 0.5686574, 0.8431073.</p></li>
 <li><p>A proporção de abstenções esteja 95% das vezes nesse intervalo: 0, 0.1960485.</p></li>
 </ul>
-<p>Fazendo os Intervalos de confiança para os cursos da área de Exatas, esperamos que:</p>
+</div>
+<div id="intervalo-de-confianca---exatas" class="section level4">
+<h4>Intervalo de confiança - EXATAS</h4>
+<p>Fazendo os Intervalos de confiança para a proporção de votos dos cursos da área de Exatas, esperamos que:</p>
 <ul>
 <li><p>A proporção de sim esteja 95% das vezes nesse intervalo: 0.2170236, 0.3272802.</p></li>
 <li><p>A proporção de não esteja 95% das vezes nesse intervalo: 0.6347451, 0.7450017.</p></li>
 <li><p>A proporção de abstenções esteja 95% das vezes nesse intervalo: 0.0036952, 0.1139518.</p></li>
 </ul>
-<p>Fazendo os Intervalos de confiança para os cursos da área de Biológicas, esperamos que:</p>
+</div>
+<div id="intervalo-de-confianca---biologicas" class="section level4">
+<h4>Intervalo de confiança - BIOLÓGICAS</h4>
+<p>Fazendo os Intervalos de confiança para a proporção de votos dos cursos da área de Biológicas, esperamos que:</p>
 <ul>
 <li><p>A proporção de sim esteja 95% das vezes nesse intervalo: 0.077868, 0.3958162.</p></li>
 <li><p>A proporção de não esteja 95% das vezes nesse intervalo: 0.5515522, 0.8695004.</p></li>
 <li><p>A proporção de abstenções esteja 95% das vezes nesse intervalo: 0, 0.2116057.</p></li>
 </ul>
-<p>Fazendo os Intervalos de confiança para os cursos da área de Humanas, esperamos que:</p>
+</div>
+<div id="intervalo-de-confianca---humanas" class="section level4">
+<h4>Intervalo de confiança - HUMANAS</h4>
+<p>Fazendo os Intervalos de confiança para a proporção de votos dos cursos da área de Humanas, esperamos que:</p>
 <ul>
 <li><p>A proporção de sim esteja 95% das vezes nesse intervalo: 0.5017772, 0.7613807.</p></li>
 <li><p>A proporção de não esteja 95% das vezes nesse intervalo: 0.2035315, 0.4631351.</p></li>
@@ -701,11 +1024,32 @@ $(document).ready(function () {
 </ul>
 </div>
 </div>
-<div id="teste-de-hipotese-para-proporcao-de-votos-no-imecc" class="section level1">
-<h1>Teste de Hipotese para proporçao de votos no Imecc</h1>
-<p>Como visto nas últimas semanas o Instituto De Matemática-Estatística e Computação Científica foi fortemente afetado pelos piquetes(nao sei se e assim que se escreve), manifestçoẽs e também por quentes discussoẽs por parte dos docentes do instituto, que queriam ministrar suas aulas para alunos que tinham interesse nas mesmas e alegavam nao ser a favor da greve, com os grevistas que com piquetes impediam os mesmos de exercerem suas atividades, alegando que estariam “desrepeitando” o movimento grevista. Para verificar a posicao dos alunos do instituto em relação a greve vamos utilizar o mesmo procedimento estatístico que foi utilizado para o geral da Unicamp. Iremos definir como:</p>
-<p>-<span class="math inline">\(p_{simImecc}\)</span> como a proporção de votos sim do Imecc</p>
-<p>-<span class="math inline">\(p_{naoImecc}\)</span> como a proporção de votos nao do Iemcc</p>
+<div id="testes-de-hipoteses" class="section level2">
+<h2>Testes de Hipóteses</h2>
+<p>Um teste de hipóteses é um procedimento estatístico baseado na análise de uma amostra, no qual temos duas hipóteses sobre a população: uma hipótese nula, denotada <span class="math inline">\(H_0\)</span> e uma hipótese alternativa, denotada <span class="math inline">\(H_1\)</span>. Além disso, todo teste também contém uma região crítica.</p>
+<p>Usando uma <em>estatística do teste</em>, uma função dos dados da amostra, tentamos sempre desprovar <span class="math inline">\(H_0\)</span> em favor de <span class="math inline">\(H_1\)</span>. Se a estatística do teste calculada pertencer à região crítica, rejeitamos <span class="math inline">\(H_0\)</span> em favor de <span class="math inline">\(H_1\)</span>. Caso contrário, não podemos rejeitar <span class="math inline">\(H_0\)</span>.</p>
+<p>A seguir, serão feitos dois testes de hipóteses: um para a proporção de votos na UNICAMP, e outro para a proporção de votos no IMECC.</p>
+<div id="teste-de-hipotese-para-a-proporcao-de-votos-na-unicamp" class="section level4">
+<h4>Teste de Hipótese para a proporção de votos na UNICAMP</h4>
+<p>Como citado no início, existem muitas dúvidas quanto a representatividade das assembleias, isso porque grande parte não pode comparecer, por diversos motivos.</p>
+<p>Para verificar se de fato a maior proporção de estudantes da UNICAMP é a favor da greve,vamos realizar um teste de hipótese comparando a proporção de votos sim com a proporção de votos não.</p>
+<p>Vamos definir como:</p>
+<ul>
+<li><p><span class="math inline">\(p_{suni}\)</span> é a proporção de votos sim da UNICAMP.</p></li>
+<li><p><span class="math inline">\(p_{nuni}\)</span> é a proporção de votos não da UNICAMP.</p></li>
+</ul>
+<p>EntÃo temos nosso teste definido com as segintes hipoteses:</p>
+<p><span class="math inline">\(H_0\)</span>: <span class="math inline">\(p_{nuni}\)</span> <span class="math inline">\(\leq\)</span> <span class="math inline">\(p_{suni}\)</span></p>
+<p><span class="math inline">\(H_1\)</span>: <span class="math inline">\(p_{nuni}\)</span> &gt; <span class="math inline">\(p_{suni}\)</span></p>
+<p>Após realizarmos o teste podemos observar que a estatística do teste apresenta o valor de 9.69 que é maior que o nosso valor z = 1.64, o que nos leva a rejeitar a hipóteste nula. Enquanto o valor da estatitstica do teste for maior que o <span class="math inline">\(z_{obs}\)</span> iremos rejeitar a hipótese nula, ou seja rejeitar o fato que a proporção de votos não é menor que a de votos sim.</p>
+</div>
+<div id="teste-de-hipotese-para-proporcao-de-votos-no-imecc" class="section level4">
+<h4>Teste de Hipótese para proporção de votos no IMECC</h4>
+<p>Nas últimas semanas o Instituto De Matemática, Estatística e Computação Científica foi fortemente afetado pelos piquetes, manifestçoẽs e também por quentes discussoẽs entre os docentes do instituto, que queriam ministrar suas aulas para alunos que tinham interesse nas mesmas e alegavam não ser a favor da greve, e os grevistas, que com piquetes impediam os mesmos de exercerem suas atividades, alegando que estariam “desrepeitando” o movimento grevista.</p>
+<p>Para verificar a posição dos alunos do instituto em relação a greve vamos utilizar o mesmo procedimento estatístico que foi utilizado para o geral da UNICAMP.</p>
+<p>Iremos definir como:</p>
+<p>-<span class="math inline">\(p_{simImecc}\)</span> como a proporção de votos sim do IMECC</p>
+<p>-<span class="math inline">\(p_{naoImecc}\)</span> como a proporção de votos não do IMECC</p>
 <p>Assim formulamos as seguintes hipóteses:</p>
 <p><span class="math inline">\(H_0\)</span>: <span class="math inline">\(p_{naoImecc}\)</span> <span class="math inline">\(\leq\)</span> <span class="math inline">\(p_{simImecc}\)</span></p>
 <p><span class="math inline">\(H_1\)</span>: <span class="math inline">\(p_{naoImecc}\)</span> &gt; <span class="math inline">\(p_{simImecc}\)</span></p>
@@ -788,7 +1132,8 @@ $(document).ready(function () {
 </tr>
 </tbody>
 </table>
-<p>Após realizarmos o teste podemos observar que a estatística do teste apresenta o valor de 5.2548 que é maior que o nosso valor z, que é 1.64, o que nos leva a rejeitar a hipóteste nula. Enquanto o valor da estatitstica do teste for maior que o <span class="math inline">\(z_{obs}\)</span> iremos rejeitar a hipótese nula, ou seja rejeitar o fato que a proporção de votos não é menor que a de votos sim.</p>
+<p>Após realizarmos o teste podemos observar que a estatística do teste apresenta o valor de 5.2548 que é maior que o nosso valor Z = 1.64, o que nos leva a rejeitar a hipóteste nula. Enquanto o valor da estatÍstica do teste for maior que o <span class="math inline">\(z_{obs}\)</span> iremos rejeitar a hipótese nula, ou seja rejeitar o fato que a proporção de votos não é menor que a de votos sim.</p>
+</div>
 </div>
 
 
